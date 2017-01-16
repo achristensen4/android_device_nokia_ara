@@ -52,7 +52,7 @@ on post-fs-data
 
 on boot
     write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/swappiness 0
     # Enable writing to brightness node under torch-light from userspace
     chown system system /sys/class/leds/torch-light/brightness
 
@@ -64,14 +64,13 @@ on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
 service time_daemon /system/bin/time_daemon
-    class late_start
+    class main
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp
+service mpdecision /system/bin/mpdecision --nosleep --avg_comp
     class main
     user root
-    disabled
 
 service thermal-engine /system/bin/thermal-engine
     class main
@@ -88,7 +87,7 @@ service qseecomd /system/bin/qseecomd
 
 #start security and simlock daemon
 service nemod /system/bin/nemod
-    class late_start
+    class main
     user root
     group root
 
@@ -115,7 +114,7 @@ service simlock_notify /system/bin/sh /system/etc/simlock.sh
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
 
@@ -134,3 +133,4 @@ service nokia_baseband /system/bin/sh /system/etc/init.nokia.baseband.sh
     class late_start
     user root
     oneshot
+    disabled
