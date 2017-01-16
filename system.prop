@@ -3,17 +3,17 @@
 #
 
 # ART
-dalvik.vm.dex2oat-swap=false
+dalvik.vm.dex2oat-swap=true
 
 # Audio
 ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=false
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=false
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=true
+persist.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=true
-audio.offload.24bit.enable=false
+audio.offload.24bit.enable=true
 audio.offload.buffer.size.kb=32
-audio.offload.gapless.enabled=true
+audio.offload.gapless.enabled=false
 audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=false
@@ -25,9 +25,9 @@ tunnel.audio.encode=false
 qcom.bluetooth.soc=smd
 
 # Camera
-camera2.portability.force_api=1
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
+camera2.portability.force_api=0
+media.stagefright.legacyencoder=false
+media.stagefright.less-secure=false
 
 # Display
 ro.sf.lcd_density=240
@@ -62,7 +62,7 @@ ro.qualcomm.cabl=0
 ro.min_freq_0=787200
 
 # Scheduler
-sys.io.scheduler=bfq
+sys.io.scheduler=cfq
 
 # SdcardFS
 ro.sys.sdcardfs=true
@@ -101,7 +101,3 @@ wifi.interface=wlan0
 
 # Dualsim
 persist.radio.multisim.config=dsds
-
-# Custom Java RIL
-#ro.telephony.ril_class=X2RIL
-
